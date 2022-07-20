@@ -1,0 +1,43 @@
+ <!-- As a link -->
+ <nav class="navbar navbar-light bg-dark " >
+    <a class="navbar-brand  " href="#" style="color:rgb(40, 88, 245);"><b> REMINDING</b></a>
+    <span class="quote text-light">For You</span>
+  </nav>
+  
+  
+  <div class="container col-md-12 mt-0">
+      <div class="d-flex justify-content-center h-100">
+          <div class="card">
+              <div class="card-header">
+                  <h3 class="text-center">Sign In</h3>
+                  
+              </div>
+              <div class="card-body">
+                  <form [formGroup]="loginForm"(ngSubmit)="login()">
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="uid" formControlName="uid" placeholder="User I.D" id="login_user_id" required>
+                          
+                      </div>
+                      <div *ngIf="this.loginForm.get('uid')?.touched&&this.loginForm.get('uid')?.errors" style="color: rgb(255, 0, 170);">Invalid User I.D</div>
+
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-key"></i></span>
+                          </div>
+                          <input type="password" class="form-control" name="pswd" formControlName="pswd" placeholder="Password" id="login_password" required>
+                      </div>
+                      <div *ngIf="this.loginForm.get('pswd')?.touched&&this.loginForm.get('pswd')?.errors" style="color: rgb(255, 0, 170);">Invalid Password</div>
+
+                      <div class="form-group">
+                        <br>
+                          <input type="submit" value="LOG IN"  class="btn float-right login_btn " style="width:50%" >
+                      </div>
+                  </form>
+              </div>
+              <p style="color:white;align-items:baseline;">Not a user ? <a routerLink="register">Register</a></p>
+          </div>
+      </div>
+  </div>

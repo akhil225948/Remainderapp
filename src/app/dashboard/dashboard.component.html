@@ -1,0 +1,58 @@
+ <!-- As a link -->
+ <nav class="navbar navbar-light bg-dark " >
+    <a class="navbar-brand  " href="#" style="color:rgb(40, 88, 245);"><b> REMINDING </b></a>
+    <span class="quote text-light">For You</span>
+  </nav>
+
+  <button class="btn btn-danger"(click)="deleteAccount() "  style="float: right; margin-right: 20px; margin-top: 10px;">Delete</button>
+  <button class="btn btn-primary" (click)="signOut()" style= " float: right; margin-right: 20px;margin-top: 10px;" >Sign out</button>
+
+
+  
+  <hr>
+  <h5 style="color: white; margin-left:20px;">{{lDate|date:'short'}}</h5>
+  <appdeleteconfirm (onDelete)= "onDelete($event)" (onCancel)="cancel()" [item] ="uid" ></appdeleteconfirm>
+
+  <div [ngClass]="uid?'c1':'' " class="container col-md-12 mt-0">
+      <div class="d-flex justify-content-center h-100">
+          <div class="card">
+              <div class="card-header">
+                  <h3 class="text-center">Event Form</h3>
+                  
+              </div>
+              <div class="card-body">
+                  <form [formGroup]="eventForm"(ngSubmit)="addevent()">
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="date" formControlName="date" placeholder="Event Date" id="entered_date" required>
+                          
+                      </div>
+                      <div *ngIf="this.eventForm.get('date')?.touched&&this.eventForm.get('date')?.errors" style="color: red;">Invalid Date</div>
+
+
+                      
+                      <div class="input-group form-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-info"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="message" formControlName="message" placeholder="Event Description" id="entered_description" required>
+                      </div>
+                      <div *ngIf="this.eventForm.get('message')?.touched&&this.eventForm.get('message')?.errors" style="color: red;">Invalid Description</div>
+
+                      <br>
+                      
+                      <div class="form-group">
+                        <input type="submit" value="ADD EVENT"  class="btn float-right login_btn " style="width:45%" >
+
+                        <input type="submit" value="VEIW EVENTS" (click)="veiwevent()" class="btn float-left login_btn " style="width:45%" >
+
+
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+

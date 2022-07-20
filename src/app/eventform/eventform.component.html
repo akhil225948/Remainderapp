@@ -1,0 +1,26 @@
+ <!-- As a link -->
+ <nav class="navbar navbar-light bg-dark " >
+    <a class="navbar-brand  " href="#" style="color:rgb(40, 88, 245);"><b> REMINDER </b></a>
+    <span class="quote text-light" >For You</span>
+  </nav>
+  
+  <h1 style="color: white; text-align:center">Event History</h1>
+  <br>
+
+  <table style="color: white;">
+    <thead>
+      <tr>
+          <th>Date</th>&nbsp;
+          <th>Descreption</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactions">
+        <th>{{transaction.date}}</th>&nbsp;
+        <th>{{transaction.message}}</th>
+    </tr>  
+   
+  </tbody>
+  </table>
+  <br>
+  <a routerLink="/dashboard" style="font-size: 20px; margin-left: 470px;margin-right: auto;">Home</a>
